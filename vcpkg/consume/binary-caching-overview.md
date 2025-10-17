@@ -13,6 +13,10 @@ Binary caching is a feature that lets vcpkg save the compiled files of a package
 location and reuse them when asked to build the same package with the same configuration. We call
 the output produced by each package build a "binary package".
 
+> [!NOTE]
+> When vcpkg restores a binary package from cache on Windows, it updates all file timestamps to the
+> current time to ensure compatibility with build systems that rely on file modification times.
+
 ## Why use binary caching?
 
 Most ports in the [vcpkg curated registry](<https://github.com/Microsoft/vcpkg>) are built from
