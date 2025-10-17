@@ -37,6 +37,18 @@ The `<rw>` optional parameter for certain sources controls whether they will be 
 downloading binaries (`read`)(default), whether on-demand builds will be uploaded to that remote
 (`write`), or both (`readwrite`).
 
+## Binary Package Restoration
+
+When vcpkg restores a binary package from cache, it extracts the archived files to the appropriate
+locations in your vcpkg installation.
+
+> [!NOTE]
+> **Windows behavior**: On Windows, vcpkg sets the last write time of all extracted files to the
+> current time (instead of preserving the original timestamps from the archive). This behavior
+> ensures compatibility with build systems and tools that use file modification times for change
+> detection. On POSIX systems (Linux, macOS), the original file timestamps are preserved during
+> restoration.
+
 ## Providers
 
 ### <a name="aws"></a> AWS S3 provider

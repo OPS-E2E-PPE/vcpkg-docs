@@ -26,6 +26,11 @@ This way, binary caching reduces the impact of the following downsides of buildi
 * **Long build times:** Restoring a binary package is usually a very fast operation that takes
   seconds to complete.
 
+> [!NOTE]
+> On Windows, when vcpkg restores a binary package from cache, it sets the last write time of all
+> extracted files to the current time instead of preserving the original timestamps. This ensures
+> compatibility with build systems that rely on file modification times for change detection.
+
 Binary caching is especially effective in CI scenarios where ephemeral containers or build agents
 force vcpkg to work with a clean-slate each time. By using a cloud-based binary cache (such as
 [GitHub Packages](<https://docs.github.com/packages>) or [Azure DevOps
